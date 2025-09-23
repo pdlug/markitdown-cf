@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "markitdown-cf",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-23",
+  "containers": [
+    {
+      "class_name": "MyContainer",
+      "image": "./Dockerfile",
+      "max_instances": 5,
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["MyContainer"],
+    },
+  ],
+  "observability": {
+    "enabled": true,
+  },
+}

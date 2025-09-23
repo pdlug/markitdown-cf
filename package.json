@@ -1,0 +1,25 @@
+{
+  "name": "markitdown-cf",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "cf-typegen": "wrangler types",
+    "format": "prettier -w ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "dependencies": {
+    "@cloudflare/containers": "^0.0.19",
+    "hono": "^4.9.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.39.0"
+  }
+}
