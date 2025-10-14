@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2021",
-    "lib": ["es2021"],
+    "lib": ["es2021", "webworker"],
     "jsx": "react-jsx",
     "module": "es2022",
     "moduleResolution": "Bundler",
-    "types": [
-      "./worker-configuration.d.ts",
-      "./worker-configuration.d.ts",
-      "node"
-    ],
+    "types": ["./worker-configuration.d.ts"],
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": false,
@@ -21,5 +17,5 @@
     "skipLibCheck": true
   },
   "exclude": ["test"],
-  "include": ["worker-configuration.d.ts", "src/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }

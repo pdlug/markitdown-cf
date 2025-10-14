@@ -1,3 +1,4 @@
 .wrangler/
 pnpm-lock.yaml
 pnpm-workspace.yaml
+worker-configuration.d.ts

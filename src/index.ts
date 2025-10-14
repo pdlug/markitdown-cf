@@ -1,4 +1,6 @@
-import { Container, getContainer } from "@cloudflare/containers";
+import { Container, getRandom } from "@cloudflare/containers";
+
+const INSTANCE_COUNT = 3;
 
 export class MyContainer extends Container<Env> {
   defaultPort = 8080; // Port the container is listening on
@@ -7,9 +9,7 @@ export class MyContainer extends Container<Env> {
 
 export default {
   async fetch(request: Request, env: Env) {
-    // Always target the default singleton container so binary bodies are proxied untouched
-    const containerInstance = getContainer(env.MY_CONTAINER);
-    // Pass the request to the container instance on its default port
+    const containerInstance = await getRandom(env.MY_CONTAINER, INSTANCE_COUNT);
     return containerInstance.fetch(request);
   },
 };
