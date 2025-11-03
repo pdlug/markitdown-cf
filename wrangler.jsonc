@@ -8,7 +8,7 @@
       "class_name": "MyContainer",
       "image": "./Dockerfile",
       "instance_type": "basic",
-      "max_instances": 2,
+      "max_instances": 3,
     },
   ],
   "durable_objects": {
@@ -22,7 +22,7 @@
   "migrations": [
     {
       "tag": "v1",
-      "new_sqlite_classes": ["MyContainer"],
+      "new_classes": ["MyContainer"],
     },
   ],
   "observability": {

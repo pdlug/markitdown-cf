@@ -33,7 +33,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 3. Build the container image (the Dockerfile uses Astral's uv base image with `uv pip` during the build):
 
    ```bash
-   docker build -t markitdown-pdf .
+   docker build --platform linux/amd64 -t markitdown-pdf .
    ```
 
 4. Run the container locally (Cloudflare's container Workers also listen on port `8080`):
@@ -61,7 +61,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## Deploying to Cloudflare Workers (Container)
 
-Cloudflare's container-based Workers are currently in early access. Once your account is enabled and you have Wrangler ≥ 3.52 installed, you can deploy as follows:
+Cloudflare's container-based Workers are currently in beta. Once your account is enabled and you have Wrangler installed, you can deploy as follows:
 
 1. Authenticate:
 
@@ -69,20 +69,13 @@ Cloudflare's container-based Workers are currently in early access. Once your ac
    npx wrangler login
    ```
 
-2. Build and push the container image to Cloudflare's registry. The current beta exposes these via `wrangler containers`:
+2. Deploy the worker (this builds and deploys the container in one step):
 
    ```bash
-   npx wrangler containers build --name markitdown-pdf
-   npx wrangler containers push --name markitdown-pdf
+   npx wrangler deploy
    ```
 
-3. Deploy the worker referencing the pushed image:
-
-   ```bash
-   npx wrangler deploy --config wrangler.toml
-   ```
-
-Adjust the image name to match your chosen Worker name. If you maintain multiple environments, use Wrangler's `--env` flag and duplicate the relevant configuration in `wrangler.toml`.
+The deployment process automatically builds the Docker image for `linux/amd64`, pushes it to Cloudflare's registry, and deploys your worker. Configuration is managed via `wrangler.jsonc`.
 
 ## Configuration
 

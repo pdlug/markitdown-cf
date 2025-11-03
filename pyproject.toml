@@ -5,7 +5,7 @@ description = "Cloudflare container Worker that converts PDFs to Markdown via Ma
 authors = [
     { name = "Paul Dlug", email = "paul.dlug@gmail.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.13,<3.14"
 dependencies = [
     "fastapi==0.110.1",
     "uvicorn[standard]==0.29.0",
@@ -22,7 +22,7 @@ dev = [
 ]
 
 [tool.poe.tasks]
-mypy = "mypy src"
+mypy = "mypy app"
 lint = "ruff check ."
 format = "ruff format ."
 
